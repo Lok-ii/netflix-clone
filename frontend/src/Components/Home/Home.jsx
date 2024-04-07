@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../utils/userApi";
 import { setIsAuthenticated, setUser } from "../../Redux/authSlice";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import useMedia from "../../utils/useMedia";
 const Home = () => {
   useMedia();
   const dispatch = useDispatch();
+  const navigateTo = useNavigate();
   useEffect(() => {
     const getUser = async () => {
       const data = await authenticateUser();
@@ -18,6 +19,7 @@ const Home = () => {
       } else {
         dispatch(setUser(null));
         dispatch(setIsAuthenticated(false));
+        navigateTo("/signin");
       }
     };
     getUser();

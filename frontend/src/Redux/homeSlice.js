@@ -12,6 +12,8 @@ const initialState = {
   searchPage: 1,
   totalSearchPages: 1,
   searchData: [],
+  signOutBox: false,
+  searchQuery: "",
 };
 
 const homeSlice = createSlice({
@@ -55,6 +57,12 @@ const homeSlice = createSlice({
     setSearchData: (state, action) => {
       state.searchData.push(action.payload);
     },
+    setSignOutBox: (state, action) => {
+      state.signOutBox = action.payload;
+    },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
@@ -70,6 +78,8 @@ export const {
   setTotalSearchPages,
   setSearchList,
   setSearchData,
+  setSignOutBox,
+  setSearchQuery,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

@@ -21,7 +21,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 .slick-list {
-  overflow: hidden;
   margin: 0;
   padding: 0;
 }
@@ -43,6 +42,7 @@
 .slick-track {
   display: flex !important;
   width: 8000px;
+  padding-left: 5rem;
   min-width: 8000px !important;
   gap: 0.5rem;
   align-items: center;
@@ -72,7 +72,7 @@
   display: block;
 }
 .slick-slide.slick-loading img {
-  /* display: none; */
+  display: none;
 }
 .slick-slide.dragging img {
   pointer-events: none;

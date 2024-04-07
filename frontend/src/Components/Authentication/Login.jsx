@@ -7,21 +7,37 @@ import {
   formDetails,
   notify,
   setFetching,
+  setIsAuthenticated,
   setMessages,
   setUser,
 } from "../../Redux/authSlice";
-import { signIn } from "../../utils/userApi";
+import { authenticateUser, signIn } from "../../utils/userApi";
 import UseAnimations from "react-useanimations";
 import loading from "react-useanimations/lib/loading";
+import { useEffect } from "react";
 
 const Login = () => {
   const [loginEmpty, setLoginEmpty] = useState("");
   const [logPassEmpty, setLogPassEmpty] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { loginEmail, loginPass, isFetching } = useSelector(
     (state) => state.auth
   );
+  const navigateTo = useNavigate();
+  useEffect(() => {
+    const getUser = async () => {
+      const data = await authenticateUser();
+      if (data.success === true) {
+        dispatch(setUser(data.user));
+        dispatch(setIsAuthenticated(true));
+        navigateTo("/home");
+      } else {
+        dispatch(setUser(null));
+        dispatch(setIsAuthenticated(false));
+      }
+    };
+    getUser();
+  }, [dispatch]);
   return (
     <div
       className="w-full min-h-[100vh] h-full bg-no-repeat bg-cover flex flex-col items-center relative"
@@ -107,7 +123,7 @@ const Login = () => {
                 setTimeout(() => {
                   dispatch(setFetching(false));
                   if (response.success) {
-                    navigate("/home");
+                    navigateTo("/home");
                   }
                   dispatch(notify(response));
                 }, 1000);
@@ -121,9 +137,9 @@ const Login = () => {
             </button>
           </form>
           <div className="flex flex-col gap-2">
-            <p>Forgot Password?</p>
+            <p className="cursor-pointer">Forgot Password?</p>
             <p>
-              New to Netflix? <Link to={"/signup"}>Sign up now.</Link>
+              New to Netflix? <Link to={"/signup"} className="text-primaryRed font-bold">Sign up now.</Link>
             </p>
           </div>
         </div>

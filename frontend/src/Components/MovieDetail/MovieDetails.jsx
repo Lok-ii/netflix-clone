@@ -133,8 +133,8 @@ const MovieDetails = () => {
               })}
             </div>
             <div className="flex flex-col">
-              <h1 className="text-[5rem] font-bold text-white flex items-center">
-                {mediaName} <span className="text-primaryRed">.</span>{" "}
+              <h1 className="text-[5rem] font-bold text-white flex items-center mediaName">
+                {mediaName}. 
               </h1>
               <p className="text-lg font-semibold text-gray-500">
                 {currentMedia.tagline}

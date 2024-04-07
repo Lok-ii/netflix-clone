@@ -18,7 +18,7 @@ connectToDatabase();
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ['http://localhost:5173'];
+      const allowedOrigins = ['https://netflix-clone-5pqc.onrender.com'];
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {

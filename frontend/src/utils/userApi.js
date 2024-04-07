@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:10000/api/v1/user";
+const baseUrl = "https://netflix-clone-5pqc.onrender.com/api/v1/user";
 
 export const signUp = async (userData) => {
   try {
@@ -37,7 +37,6 @@ export const signOut = async () => {
       withCredentials: true,
     });
     console.log(response.data);
-    return response.data;
   } catch (error) {
     console.log(error.response.data);
     return error.response.data;
@@ -65,7 +64,7 @@ export const authenticateUser = async () => {
 
 export const addToFavourites = async (id) => {
   try {
-    const res = await axios.post(`${baseUrl}/likes/${id}`,{}, {
+    const res = await axios.post(`${baseUrl}/likes/${id}`, {
       withCredentials: true,
     });
     console.log(res.data);
@@ -77,7 +76,7 @@ export const addToFavourites = async (id) => {
 
 export const removeFromFavourites = async (id) => {
   try {
-    const res = await axios.post(`${baseUrl}/dislikes/${id}`, id,  {
+    const res = await axios.post(`${baseUrl}/dislikes/${id}`, {
       withCredentials: true,
     });
     console.log(res.data);

@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
 import MovieCard from "./MovieCard";
+import { Carousel } from 'nuka-carousel';
 
 const SliderData = ({ name, data, endPoint }) => {
   const settings = {
@@ -54,7 +55,10 @@ const SliderData = ({ name, data, endPoint }) => {
       <div className="title flex items-center justify-between">
         <p className="text-2xl font-medium text-white">{name}</p>
       </div>
-      <Slider className="w-[100%] rounded-2xl" {...settings}>
+      <Carousel 
+      slidesToScroll={"slide"}
+      showArrows
+      className="nukaWala w-[100%] rounded-2xl overflow-y-hidden" >
         {data &&
           data.map((ele) => {
             return (
@@ -65,7 +69,7 @@ const SliderData = ({ name, data, endPoint }) => {
               />
             );
           })}
-      </Slider>
+      </Carousel>
     </div>
   );
 };

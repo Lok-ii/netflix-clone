@@ -10,6 +10,8 @@ import { ToastContainer } from "react-toastify";
 import Home from "./Components/Home/Home";
 import DetailsPage from "./Components/MovieDetail/DetailsPage";
 import MainSection from "./Components/Home/MainSection";
+import Explore from "./Components/Explore/Explore";
+import Search from "./Components/Search/Search";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +44,14 @@ function App() {
         {
           path: "details/:mediaType/:id",
           element: <DetailsPage />,
+        },
+        {
+          path: "explore/:mediaType",
+          element: <Explore />,
+        },
+        {
+          path: "search/:searchKeyword",
+          element: <Search />,
         },
       ],
     },

@@ -1,11 +1,31 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import background from "../../assets/images/background.jpg";
 import logo from "../../assets/svgs/Logo.svg";
 import translate from "../../assets/svgs/translate.svg";
 import { FaCaretDown } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { authenticateUser } from "../../utils/userApi";
+import { setIsAuthenticated, setUser } from "../../Redux/authSlice";
 
 const FrontPage = () => {
+  const dispatch = useDispatch();
+  const navigateTo = useNavigate();
+  useEffect(() => {
+    const getUser = async () => {
+      const data = await authenticateUser();
+      if (data.success === true) {
+        dispatch(setUser(data.user));
+        dispatch(setIsAuthenticated(true));
+        navigateTo("/home");
+      } else {
+        dispatch(setUser(null));
+        dispatch(setIsAuthenticated(false));
+      }
+    };
+    getUser();
+  }, [dispatch]);
   return (
     <div
       className="w-full h-[100vh] bg-no-repeat flex flex-col items-center"
@@ -16,9 +36,9 @@ const FrontPage = () => {
       }}
     >
       <div className="w-[80%] h-[5rem] px-4 flex justify-between items-center">
-        <div className="w-[9rem]">
+        <Link to={"/"} className="w-[9rem]">
           <img src={logo} alt="" />
-        </div>
+        </Link>
         <div className="flex items-center gap-8">
           <div
             className="relative text-white flex items-center gap-2 bg-transparent px-4 py-[0.1rem] rounded-sm cursor-pointer active:border-[1px] border-white"
