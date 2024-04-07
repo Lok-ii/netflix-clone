@@ -46,7 +46,7 @@ export const signOut = async () => {
 
 export const authenticateUser = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/authenticate`, {
+    const res = await axios.post(`${baseUrl}/authenticate`, {}, {
       withCredentials: true,
     });
     const data = res.data;
