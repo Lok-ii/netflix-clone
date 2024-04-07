@@ -163,7 +163,7 @@ const MovieDetails = () => {
                 <p>WATCH NOW</p>
               </button>
               {Object.keys(user).length !== 0 &&
-              user.likes.includes(currentMedia.id) ? (
+              user.likes.includes(currentMedia.id.toString()) ? (
                 <button
                   className="bg-primaryRed rounded-3xl flex items-center py-2 px-6 gap-3"
                   onClick={async () => {
@@ -176,7 +176,7 @@ const MovieDetails = () => {
                   <div className="w-8 h-8 rounded-[50%] flex items-center justify-center bg-white">
                     <AiFillDislike className="text-primaryRed text-lg" />
                   </div>
-                  <p>Remove from Favourites</p>
+                  <p>Dislike</p>
                 </button>
               ) : (
                 <button
@@ -191,7 +191,7 @@ const MovieDetails = () => {
                   <div className="w-8 h-8 rounded-[50%] flex items-center justify-center bg-white">
                     <AiFillLike className="text-primaryRed text-lg" />
                   </div>
-                  <p>Add to Favourites</p>
+                  <p>Like</p>
                 </button>
               )}
             </div>

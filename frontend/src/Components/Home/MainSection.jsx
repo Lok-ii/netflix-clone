@@ -13,12 +13,12 @@ const MainSection = () => {
         <SliderData
           name="Trending Now Movies"
           data={trendingDay}
-          endPoint={"movies"}
+          endPoint={"movie"}
         />
         <SliderData
           name="Popular Movies"
           data={popularMovies}
-          endPoint={"movies"}
+          endPoint={"movie"}
         />
         <SliderData
           name="Popular TV Shows"
@@ -28,7 +28,7 @@ const MainSection = () => {
         <SliderData
           name="Top Rated Movies"
           data={topMovies}
-          endPoint={"movies"}
+          endPoint={"movie"}
         />
         <SliderData name="Top Rated Shows" data={topTvShows} endPoint={"tv"} />
       </div>
