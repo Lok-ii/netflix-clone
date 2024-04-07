@@ -33,9 +33,13 @@ export const signIn = async (userData) => {
 
 export const signOut = async () => {
   try {
-    const response = await axios.post(`${baseUrl}/signout`, {}, {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      `${baseUrl}/signout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
     console.log(response.data);
   } catch (error) {
     console.log(error.response.data);
@@ -64,9 +68,13 @@ export const authenticateUser = async () => {
 
 export const addToFavourites = async (id) => {
   try {
-    const res = await axios.post(`${baseUrl}/likes/${id}`, {
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      `${baseUrl}/likes/${id}`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
     console.log(res.data);
     return res.data.updatedUser;
   } catch (error) {
@@ -76,9 +84,13 @@ export const addToFavourites = async (id) => {
 
 export const removeFromFavourites = async (id) => {
   try {
-    const res = await axios.post(`${baseUrl}/dislikes/${id}`, {
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      `${baseUrl}/dislikes/${id}`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
     console.log(res.data);
     return res.data.updatedUser;
   } catch (error) {

@@ -50,9 +50,10 @@ const Navbar = () => {
               dispatch(setSignOutBox(!signOutBox));
             }}
           />
-          <div className={`absolute left-0 w-32 py-2 px-4`}>
-            <p>{user?.username}</p>
+          <div className={`absolute left-0 w-32 py-2 px-4 bg-white`}>
+            <p className="text-lg font-semibold">{user?.username}</p>
             <p
+              className="text-lg font-semibold"
               onClick={() => {
                 signOut();
                 navigateTo("/signin");
