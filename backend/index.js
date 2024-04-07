@@ -18,7 +18,7 @@ connectToDatabase();
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ['https://netflix-clone-5pqc.onrender.com'];
+      const allowedOrigins = ['https://netflix-beta-smoky.vercel.app'];
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
