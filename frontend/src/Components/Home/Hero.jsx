@@ -27,7 +27,6 @@ const Hero = () => {
         try {
           const url = `/${randomData.media_type}/${randomData.id}/videos`;
           const videoData = await fetchData(url, commonApiParams);
-          console.log(videoData);
           const video = videoData.results.filter((v) =>
             v.name.includes("Official")
           );
@@ -36,7 +35,6 @@ const Hero = () => {
 
             const homeUrl = `/${randomData.media_type}/${randomData.id}`;
             const homeData = await fetchData(homeUrl, commonApiParams);
-            console.log(homeData);
             dispatch(setHomeScreenData(homeData));
           } else {
             dispatch(setHomeScreenKey("fC5MKJDW6sc"));

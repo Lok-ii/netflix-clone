@@ -5,7 +5,6 @@ const baseUrl = "https://netflix-clone-5pqc.onrender.com/api/v1/user";
 export const signUp = async (userData) => {
   try {
     const response = await axios.post(`${baseUrl}/signup`, userData);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.response.data);
@@ -21,7 +20,6 @@ export const signIn = async (userData) => {
       },
       withCredentials: true,
     });
-    console.log(response.data);
     const data = response.data;
     localStorage.setItem("netflixUser", JSON.stringify(data.user));
     return { ...response.data, user: data.user };
@@ -40,7 +38,6 @@ export const signOut = async () => {
         withCredentials: true,
       }
     );
-    console.log(response.data);
   } catch (error) {
     console.log(error.response.data);
     return error.response.data;
@@ -75,7 +72,6 @@ export const addToFavourites = async (id) => {
         withCredentials: true,
       }
     );
-    console.log(res.data);
     return res.data.updatedUser;
   } catch (error) {
     console.log(error);
@@ -91,7 +87,6 @@ export const removeFromFavourites = async (id) => {
         withCredentials: true,
       }
     );
-    console.log(res.data);
     return res.data.updatedUser;
   } catch (error) {
     console.log(error);

@@ -113,7 +113,6 @@ const Login = () => {
               onClick={async (e) => {
                 e.preventDefault();
                 dispatch(setFetching(true));
-                console.log(loginEmail, loginPass);
                 const response = await signIn({
                   email: loginEmail,
                   password: loginPass,

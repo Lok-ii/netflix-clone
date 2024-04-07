@@ -32,7 +32,6 @@ const useMedia = () => {
     const getTrendingWeek = async () => {
       try {
         const data = await fetchData("/trending/all/week", commonApiParams);
-        console.log(data);
         dispatch(setTrendingWeek(data));
       } catch (err) {
         console.log(err);
@@ -44,7 +43,6 @@ const useMedia = () => {
     const getPopularMovies = async () => {
       try {
         const data = await fetchData("/movie/popular", commonApiParams);
-        console.log(data);
         dispatch(setPopularMovies(data));
       } catch (error) {
         console.log(error);
@@ -55,7 +53,6 @@ const useMedia = () => {
     const getPopularTvShows = async () => {
       try {
         const data = await fetchData("/tv/popular", commonApiParams);
-        console.log(data);
         dispatch(setPopularTvShows(data));
       } catch (error) {
         console.log(error);
@@ -67,7 +64,6 @@ const useMedia = () => {
     const getTopMovies = async () => {
       try {
         const data = await fetchData("/movie/top_rated", commonApiParams);
-        console.log(data);
         dispatch(setTopMovies(data));
       } catch (error) {
         console.log(error);
@@ -78,7 +74,6 @@ const useMedia = () => {
     const getTopTvShows = async () => {
       try {
         const data = await fetchData("/tv/top_rated", commonApiParams);
-        console.log(data);
         dispatch(setTopTvShows(data));
       } catch (error) {
         console.log(error);
@@ -89,7 +84,6 @@ const useMedia = () => {
     const fetchGenre = async () => {
       try {
         const data = await fetchData("/genre/movie/list", commonApiParams);
-        console.log(data);
         dispatch(setGenre(data));
       } catch (error) {
         console.log(error);

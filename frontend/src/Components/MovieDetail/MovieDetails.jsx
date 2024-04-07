@@ -40,11 +40,9 @@ const MovieDetails = () => {
       language: "en-US",
     };
     const url = `/${param.mediaType}/${param.id}`;
-    console.log("fetched", url);
     const getDetails = async () => {
       try {
         const data = await fetchData(url, commonApiParams);
-        console.log(data);
         dispatch(setCurrentMedia(data));
         const vote =
           data.vote_average.toString().length > 3
@@ -238,89 +236,6 @@ const MovieDetails = () => {
             })}
           </div>
         </div>
-        {/* <div className="w-[75%] min-h-[70vh] my-8 justify-between flex ">
-          <div className="w-[30%] h-[70vh] rounded-lg self-start">
-            <img className="w-full h-full rounded-lg" src={posterImg} alt="" />
-          </div>
-          <div className="w-[66%] h-full flex flex-col gap-5">
-            <div className="flex flex-col">
-              <h1 className="text-4xl font-semibold text-white">
-                {mediaName} ({date.substr(0, 4)})
-              </h1>
-              <p className="text-lg font-semibold text-gray-500">
-                {currentMedia.tagline}
-              </p>
-            </div>
-            <div className="genres flex items-center flex-wrap gap-1">
-              {currentMedia.genres.map((genre) => {
-                return (
-                  <p
-                    className="bg-[#DA2F68] px-2 py-1 rounded-lg text-xs"
-                    key={genre.id}
-                  >
-                    {genre.name}
-                  </p>
-                );
-              })}
-            </div>
-            <div className="h-[7rem] flex items-center gap-8">
-              <div className="svgHover h-full flex gap-4 items-center group hover:cursor-pointer" >
-                <div className="w-[6rem]">
-                  <Play />
-                </div>
-                <span className="text text-xl group-hover:text-pinkText transition-all duration-700">
-                  Watch Trailer
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <h1 className="font-medium text-[1.5rem]">Overview</h1>
-              <p className="text-[1rem] font-medium">{currentMedia.overview}</p>
-            </div>
-            <div className="flex gap-12 font-medium text-[1rem] border-b pb-4 border-[#1E2C41]">
-              <p className="text-[1rem] font-medium">
-                Status:{" "}
-                <span className="text-gray-500">{currentMedia.status}</span>
-              </p>
-              <p className="text-[1rem] font-medium">
-                Release Date: <span className="text-gray-500">{date}</span>
-              </p>
-              {currentMedia.runtime ? (
-                <p className="text-[1rem] font-medium">
-                  Runtime:{" "}
-                  <span className="text-gray-500">{`${Math.floor(
-                    currentMedia.runtime / 60
-                  )}h ${currentMedia.runtime % 60}m`}</span>
-                </p>
-              ) : (
-                <p className="text-[1rem] font-medium">
-                  Episode Time:{" "}
-                  <span className="text-gray-500">{currentMedia.episode_run_time}m</span>
-                </p>
-              )}
-            </div>
-            <div className="flex flex-col">
-              {crew.map((item) => {
-                if (item.job === "Director" || item.job === "Writer") {
-                  console.log(item.job);
-                  return (
-                    <p
-                      key={item.id}
-                      id={item.id}
-                      className="text-[1rem] font-medium border-b pb-4 border-[#1E2C41]"
-                    >
-                      {item.job}:{" "}
-                      <span className="text-gray-500 font-bold">
-                        {item.name || item.original_name}
-                      </span>
-                    </p>
-                  );
-                }
-                return null;
-              })}
-            </div>
-          </div>
-        </div> */}
       </div>
     )
   );

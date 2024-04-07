@@ -51,7 +51,6 @@ const Explore = () => {
 
   const handleSort = useCallback(
     (selectedOption) => {
-      console.log(selectedOption);
       dispatch(setMediaList({ type: "new", data: [] }));
       dispatch(setFilters({ type: "sort_by", value: selectedOption.value }));
     },
@@ -73,7 +72,6 @@ const Explore = () => {
     const fetchGenre = async () => {
       try {
         const data = await fetchData("/genre/movie/list", commonApiParams);
-        console.log(data);
         dispatch(setGenre(data));
       } catch (error) {
         console.log(error);
@@ -84,10 +82,8 @@ const Explore = () => {
 
   useEffect(() => {
     const fetchMedia = async () => {
-      console.log(filters);
       try {
         const data = await fetchData(`/discover/${mediaType}`, filters);
-        console.log(data);
         dispatch(setTotalPage(data?.total_pages));
         dispatch(setMediaList({ type: "old", data: data.results }));
       } catch (error) {

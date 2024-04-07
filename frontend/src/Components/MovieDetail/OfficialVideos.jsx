@@ -19,7 +19,6 @@ const OfficialVideos = () => {
     (state) => state.media
   );
   const baseVideoUrl = "https://www.youtube.com/watch?v=";
-console.log(isModalOpen)
   useEffect(() => {
     const commonApiParams = {
       language: "en-US",
@@ -28,7 +27,6 @@ console.log(isModalOpen)
     const getVideos = async () => {
       try {
         const data = await fetchData(url + "/videos", commonApiParams);
-        console.log(data);
         dispatch(setVideos(data));
       } catch (err) {
         console.log(err);
@@ -38,12 +36,7 @@ console.log(isModalOpen)
     getVideos();
   }, [param.id, dispatch, param.mediaType]);
 
-  // document.addEventListener("click", (e) => {
-  //   if ((!(e.target.classList.contains("modal"))) && (!(e.target.classList.contains("svgHover")))) {
-  //   console.log(e.target);
-  //     dispatch(setModal("hidden"));
-  //   }
-  // });
+
   return (
     videos.length !== 0 && (
       <div className="w-[90%] flex flex-col gap-8 ">
@@ -82,8 +75,7 @@ console.log(isModalOpen)
               >
                 <div
                   className="hiddenBackground w-[20rem] h-[11.5rem] rounded-[1rem] top-3 absolute bg-lightBackground z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  onClick={(e) => {
-                    console.log("Clicked on", e.target);
+                  onClick={() => {
                     dispatch(setPlayerVideo(`${baseVideoUrl + video.key}`));
                     dispatch(setIsModalOpen(true));
                   }}

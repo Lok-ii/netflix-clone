@@ -18,7 +18,6 @@ const Similar = () => {
     const getSimilar = async () => {
       try {
         const data = await fetchData(url + "/similar", commonApiParams);
-        console.log(data);
         dispatch(setSimilar(data));
       } catch (err) {
         console.log(err);

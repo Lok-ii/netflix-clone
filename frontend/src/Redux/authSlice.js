@@ -23,7 +23,6 @@ const authSlice = createSlice({
     formDetails: (state, action) => {
       if (action.payload.type === "SIGNEMAIL") {
         state.signupEmail = action.payload.value;
-        console.log(state.signupEmail);
       } else if (action.payload.type === "LOGINEMAIL") {
         state.loginEmail = action.payload.value;
       } else if (action.payload.type === "SIGNPASS") {

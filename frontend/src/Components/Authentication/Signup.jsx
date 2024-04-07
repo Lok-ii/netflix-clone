@@ -99,7 +99,6 @@ const Signup = () => {
           onClick={async (e) => {
             e.preventDefault();
             dispatch(setFetching(true));
-            console.log(signupEmail, signupName, signupPass);
             const serverMessage = await signUp({
               username: signupName,
               email: signupEmail,
