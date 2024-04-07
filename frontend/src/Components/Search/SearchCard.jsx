@@ -27,7 +27,7 @@ const SearchCard = ({ ele, endPoint }) => {
   }, [ele.genre_ids, getGenre]);
 
   return (
-    <Link to={`/details/${ele.media_type || endPoint}/${ele.id}`} className='w-[23%]'>
+    <Link to={`/home/details/${ele.media_type || endPoint}/${ele.id}`} className='w-[23%]'>
       <div className="carouselItem cursor-pointer">
         <div className="posterBloc w-full rounded-2xl h-full relative">
           <span className="w-full rounded-[1rem]">

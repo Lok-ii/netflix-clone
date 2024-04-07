@@ -3,13 +3,15 @@ import background from "../../assets/images/background.jpg";
 import logo from "../../assets/svgs/Logo.svg";
 import translate from "../../assets/svgs/translate.svg";
 import { FaCaretDown } from "react-icons/fa";
-import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authenticateUser } from "../../utils/userApi";
 import { setIsAuthenticated, setUser } from "../../Redux/authSlice";
 
 const FrontPage = () => {
+  const [selectMenu, setSelectMenu] = useState(false);
+  const [selectText, setSelectText] = useState("English");
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
   useEffect(() => {
@@ -43,15 +45,26 @@ const FrontPage = () => {
           <div
             className="relative text-white flex items-center gap-2 bg-transparent px-4 py-[0.1rem] rounded-sm cursor-pointer active:border-[1px] border-white"
             style={{ boxShadow: "0 0 1px 0px white" }}
+            onClick={() => setSelectMenu((prev) => !prev)}
           >
             <img src={translate} alt="" />
-            <p>English</p>
+            <p>{selectText}</p>
             <FaCaretDown />
-            <div className="flex flex-col items-center absolute top-[120%] left-0 w-full rounded-md bg-white text-black ">
-              <p className="hover:bg-[#1967D2] hover:text-white w-full text-center rounded-t-md">
+            <div
+              className={`flex-col items-center absolute top-[120%] left-0 w-full rounded-md bg-white text-black ${
+                selectMenu ? "flex" : "hidden"
+              }`}
+            >
+              <p
+                className="hover:bg-[#1967D2] hover:text-white w-full text-center rounded-t-md"
+                onClick={(e) => setSelectText(e.target.innerText)}
+              >
                 English
               </p>
-              <p className="hover:bg-[#1967D2] hover:text-white w-full text-center rounded-b-md">
+              <p
+                className="hover:bg-[#1967D2] hover:text-white w-full text-center rounded-b-md"
+                onClick={(e) => setSelectText(e.target.innerText)}
+              >
                 हिन्दी
               </p>
             </div>

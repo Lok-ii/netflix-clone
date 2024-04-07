@@ -50,12 +50,19 @@ const Navbar = () => {
               dispatch(setSignOutBox(!signOutBox));
             }}
           />
-          <div className={`absolute left-0 w-32 py-2 px-4 bg-white`}>
-            <p className="text-lg font-semibold">{user?.username}</p>
+          <div
+            className={`absolute right-0 ${
+              signOutBox ? "top-10" : "top-[-50rem]"
+            } transition-all duration-300 ease-in-out rounded-lg w-32  bg-white text-black `}
+          >
+            <p className="text-lg font-semibold rounded-t-lg py-2 px-4 hover:bg-primaryRed hover:text-white">
+              {user?.username}
+            </p>
             <p
-              className="text-lg font-semibold"
+              className="text-lg font-semibold rounded-b-lg py-2 px-4 hover:bg-primaryRed hover:text-white"
               onClick={() => {
                 signOut();
+                dispatch(setSignOutBox(false));
                 navigateTo("/signin");
               }}
             >
