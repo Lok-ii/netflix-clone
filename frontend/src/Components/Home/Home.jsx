@@ -16,6 +16,7 @@ const Home = () => {
       if (data.success === true) {
         dispatch(setUser(data.user));
         dispatch(setIsAuthenticated(true));
+        navigateTo("/home");
       } else {
         dispatch(setUser(null));
         dispatch(setIsAuthenticated(false));
