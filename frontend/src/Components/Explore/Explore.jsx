@@ -10,7 +10,6 @@ import {
   setTotalPage,
 } from "../../Redux/exploreSlice";
 import { useParams } from "react-router-dom";
-import MovieCard from "../Sliders/MovieCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { DNA } from "react-loader-spinner";
 import SearchCard from "../Search/SearchCard";
