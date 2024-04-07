@@ -110,62 +110,7 @@ const saveUserAddress = async (req, res) => {
   }
 };
 
-// const addToFavourites = async (req, res) => {
-//   try {
-//     const updateObject = {
-//       $push: {
-//         favourites: req.body.id,
-//       },
-//     };
-//     const updatedUser = await userModel.findByIdAndUpdate(
-//       req.user._id,
-//       updateObject,
-//       {new: true}
-//     );
-//     log(updatedUser);
-//     res.json({
-//       success: true,
-//       message: "Item added to favourites",
-//       upadatedUser: updatedUser
-//     });
-//   } catch (error) {
-//     log(error);
-//     res.status(res.statusCode).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// };
-
-// const removeFromFavourites = async (req, res) => {
-//   try {
-//     const updateObject = {
-//       $pull: {
-//         favourites: req.body.id,
-//       },
-//     };
-//     const updatedUser = await userModel.findByIdAndUpdate(
-//       req.user._id,
-//       updateObject,
-//       {new: true}
-//     );
-//     log(updatedUser);
-//     res.json({
-//       success: true,
-//       message: "Item removed from favourites",
-//       upadatedUser: updatedUser
-//     });
-//   } catch (error) {
-//     log(error);
-//     res.status(res.statusCode).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// }
-
 const likeDislikeController = async (req, res) => {
-  log("user===>>", req.user);
   let message = "";
   let updateObject = {};
   try {

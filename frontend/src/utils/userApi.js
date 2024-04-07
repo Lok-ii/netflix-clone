@@ -49,13 +49,7 @@ export const authenticateUser = async () => {
     const res = await axios.get(`${baseUrl}/authenticate`, {
       withCredentials: true,
     });
-    console.log(res.data);
     const data = res.data;
-    for (let key in data.user) {
-      if (key === "password") {
-        delete data.user.password;
-      }
-    }
     return data;
   } catch (err) {
     console.log(err);
