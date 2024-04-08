@@ -17,7 +17,7 @@ router.post("/signin", userLogin);
 
 router.post("/signout", userLogout);
 
-router.post("/authenticate", authMiddleware, getUser);
+router.get("/authenticate", authMiddleware, getUser);
 
 router.post("/address", authMiddleware, saveUserAddress);
 
