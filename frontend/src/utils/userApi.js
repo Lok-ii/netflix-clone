@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const baseUrl = "https://netflix-clone-5pqc.onrender.com/api/v1/user";
+// const baseUrl = "http://localhost:10000/api/v1/user";
 
 export const signUp = async (userData) => {
   try {
@@ -46,9 +47,13 @@ export const signOut = async () => {
 
 export const authenticateUser = async () => {
   try {
-    const res = await axios.post(`${baseUrl}/authenticate`, {}, {
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      `${baseUrl}/authenticate`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
     const data = res.data;
     console.log(data);
     return data;
