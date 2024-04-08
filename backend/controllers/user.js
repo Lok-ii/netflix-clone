@@ -46,8 +46,12 @@ const userLogin = async (req, res) => {
       };
       const token = jwt.sign(payload, process.env.JWT_SECRET_KEY);
       res
-        .status(201)
-        .cookie("token", token, { httpOnly: true })
+        .cookie("token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+          sameSite: "None", // Necessary if your frontend and backend are on different origins and you're using secure cookies
+          maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+        })
         .json({
           success: true,
           message: "Welcome back " + user.username + "!",
@@ -64,7 +68,7 @@ const userLogin = async (req, res) => {
 };
 
 const userLogout = async (req, res) => {
-  res.clearCookie("token", {httpOnly: true}).json({
+  res.clearCookie("token", { httpOnly: true }).json({
     success: true,
     message: "Logged out successfully!",
   });
@@ -174,11 +178,9 @@ const likeDislikeController = async (req, res) => {
       };
       message = `${req.params.action} added successfully`;
     }
-    const updateduser = await userModel.findByIdAndUpdate(
-      req.user._id,
-      updateObject,
-      { new: true }
-    ).select(["-password", "-__v"]);
+    const updateduser = await userModel
+      .findByIdAndUpdate(req.user._id, updateObject, { new: true })
+      .select(["-password", "-__v"]);
     log(updateduser);
     res.json({
       success: true,
